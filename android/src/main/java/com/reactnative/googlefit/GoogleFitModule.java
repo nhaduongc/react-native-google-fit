@@ -568,4 +568,13 @@ public class GoogleFitModule extends ReactContextBaseJavaModule implements Lifec
             promise.reject(e);
         }
     }
+
+    @ReactMethod
+    public void saveNewMetric(double startDate, double endDate, ReadableMap options, Promise promise) {
+        try {
+            mGoogleFitManager.getHealthHistory().deleteAllSleep((long)startDate, (long)endDate, options, promise);
+        } catch (Error e) {
+            promise.reject(e);
+        }
+    }
 }
